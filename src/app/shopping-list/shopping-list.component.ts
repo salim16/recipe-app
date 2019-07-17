@@ -16,6 +16,7 @@ export class ShoppingListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("ShoppingListComponent loaded..");
   }
 
   onIngredientCreated(ingredient: Ingredient) {

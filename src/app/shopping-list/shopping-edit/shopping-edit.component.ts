@@ -15,6 +15,7 @@ export class ShoppingEditComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("ShoppingEditComponent loaded..");
   }
 
   onAddIngredient(name: HTMLInputElement,) {
