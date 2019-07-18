@@ -21,4 +21,13 @@ export class ShoppingListService {
         this.ingredientsChanged.emit(this.ingredients.slice());
     }
 
+    addIngredients(ingredients: Ingredient[]) {
+        // using for loop we get to many emissions
+        // for(let ingredient of ingredients) {
+        //     this.addIngredient(ingredient);
+        // }
+        // es6 syntax to directly add all ingredients at once into the array. 
+        this.ingredients.push(...ingredients);
+        this.ingredientsChanged.emit(this.ingredients.slice());
+    }
 }
