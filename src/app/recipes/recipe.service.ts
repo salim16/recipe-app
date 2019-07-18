@@ -1,11 +1,30 @@
 import { Recipe } from './recipe.model';
 import { Output, EventEmitter } from '@angular/core';
+import { Ingredient } from '../shared/ingredient.model';
 
 export class RecipeService {
     private recipes: Array<Recipe> =  [
-        new Recipe('A Test Recipe', 'This is simply a test', 'https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_960_720.jpg'),
-        new Recipe('A Tomato!', 'Healthy Tomatoes', 'https://cdn.pixabay.com/photo/2018/04/12/16/43/food-3314004_960_720.jpg'),
-        new Recipe('Salsa Salad!', 'Refreshing Breakfast to keep you going!', 'https://www.maxpixel.net/static/photo/1x/Recipe-Dish-Home-Vegetarian-Food-Lunch-Nutrition-3889916.jpg'),
+        new Recipe(
+            'Tasty Schnitzel',
+            'A super-tasty Schnitzel - just awesome!', 
+            'https://upload.wikimedia.org/wikipedia/commons/7/72/Schnitzel.JPG',
+            [
+                new Ingredient('Meat', 1),
+                new Ingredient('French Fries', 20)
+            ]),
+        new Recipe(
+            'Big Fat Burger', 
+            'What else you need to say?', 
+            'https://upload.wikimedia.org/wikipedia/commons/b/be/Burger_King_Angus_Bacon_%26_Cheese_Steak_Burger.jpg',
+            [
+                new Ingredient('Buns', 2),
+                new Ingredient('Meat', 1)
+            ]),
+        new Recipe(
+            'Salsa Salad!', 
+            'Refreshing Breakfast to keep you going!', 
+            'https://www.maxpixel.net/static/photo/1x/Recipe-Dish-Home-Vegetarian-Food-Lunch-Nutrition-3889916.jpg',
+            []),
     ];
 
     // returns clone of recipes array
