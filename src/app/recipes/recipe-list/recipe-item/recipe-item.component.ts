@@ -11,6 +11,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 export class RecipeItemComponent implements OnInit {
 
   @Input('recipeItem') recipe: Recipe;
+  @Input() index: number;
   // @Output() recipeSelected = new EventEmitter<void>();
 
   constructor(private recipeService: RecipeService) { }
