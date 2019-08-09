@@ -1,11 +1,13 @@
-import { Recipe } from './recipe.model';
+import { Subject } from 'rxjs';
 import { Output, EventEmitter } from '@angular/core';
+
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
+import { Recipe } from './recipe.model';
 
 export class RecipeService {
     
-    @Output() recipeSelected = new EventEmitter<Recipe>();
+    // recipeSelected = new Subject<Recipe>();
 
     constructor(private shoppingListService: ShoppingListService) {}
 
