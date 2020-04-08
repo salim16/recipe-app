@@ -17,6 +17,7 @@ export class RecipeListComponent implements OnInit {
   //   new Recipe('Salsa Salad!', 'Refreshing Breakfast to keep you going!', 'https://www.maxpixel.net/static/photo/1x/Recipe-Dish-Home-Vegetarian-Food-Lunch-Nutrition-3889916.jpg'),
   // ];
 
+  //recipes: Recipe[] = [];
   recipes: Array<Recipe>;
 
   constructor(private recipeService: RecipeService,

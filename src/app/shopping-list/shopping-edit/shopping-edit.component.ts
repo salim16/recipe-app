@@ -9,7 +9,6 @@ import { ShoppingListService } from '../shopping-list.service';
 })
 export class ShoppingEditComponent implements OnInit {
 
-  // ingredient: Ingredient;
   // @Output('ingredientCreated') createdIngredient = new EventEmitter<Ingredient>();
   @ViewChild('amountInput', {static: false}) amount: ElementRef;
 
@@ -20,9 +19,8 @@ export class ShoppingEditComponent implements OnInit {
   }
 
   onAddIngredient(name: HTMLInputElement,) {
-    // this.ingredient = new Ingredient(name.value, this.amount.nativeElement.value);
     const ingredient = new Ingredient(name.value, this.amount.nativeElement.value);
-    // this.shoppingListService.addIngList.emit(ingredient);
+    // this.createdIngredient.emit(ingredient);
     this.shoppingListService.addIngredient(ingredient);
   }
 
