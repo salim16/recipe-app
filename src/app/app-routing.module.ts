@@ -8,6 +8,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 
 const routes: Routes = [
   {
+    // since '' path is a part of every path hence we need to add pathMatch attibute
     path: '',
     redirectTo: '/recipes',
     pathMatch: 'full'

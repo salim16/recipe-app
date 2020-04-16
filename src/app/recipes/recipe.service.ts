@@ -31,11 +31,12 @@ export class RecipeService {
         new Recipe(
             'Salsa Salad!', 
             'Refreshing Breakfast to keep you going!', 
-            'https://www.maxpixel.net/static/photo/1x/Recipe-Dish-Home-Vegetarian-Food-Lunch-Nutrition-3889916.jpg',
+            'https://storage.needpix.com/rsynced_images/recipes-2920072_1280.jpg',
             []),
     ];
 
     // returns clone of recipes array
+    // slice only returns shallow copy
     getRecipes() {
        return this.recipes.slice();
     }
