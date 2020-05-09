@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { RecipeService } from '../recipes/recipe.service';
 import { Recipe } from '../recipes/recipe.model';
 
+import { map } from 'rxjs/operators';
+
 @Injectable({providedIn: 'root'})
 export class DataStorageService {
 
@@ -19,7 +21,25 @@ export class DataStorageService {
     }
 
     fetchRecipes() {
-        this.http.get<Recipe[]>('https://ng-course-recipe-book-1ce78.firebaseio.com/recipes.json')
+        // transforming the data before subscribing 
+        // this was important because when we have no ingredients at the back then a javascript 
+        // recipe object without ingredients defined is sent from back.
+        // so we transform the response by adding empty ingredientd to it before subscribing
+
+        // Now first map is a rxjs operator 
+        // and second is a method on the array object of javascript
+        this.http.get<Recipe[]>
+            ('https://ng-course-recipe-book-1ce78.firebaseio.com/recipes.json')
+            .pipe(
+                map(recipes => {
+                    return recipes.map(recipe => {
+                       return {
+                           ...recipe,
+                           ingredients: recipe.ingredients? recipe.ingredients : []
+                       };
+                    });
+                })
+            )
             .subscribe(recipes => {
                 console.log(recipes);
                 this.recipeService.setRecipes(recipes);
