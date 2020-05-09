@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { RecipeService } from '../recipes/recipe.service';
 import { Recipe } from '../recipes/recipe.model';
 
-import { map } from 'rxjs/operators';
+import { map, tap} from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class DataStorageService {
@@ -28,7 +28,7 @@ export class DataStorageService {
 
         // Now first map is a rxjs operator 
         // and second is a method on the array object of javascript
-        this.http.get<Recipe[]>
+        return this.http.get<Recipe[]>
             ('https://ng-course-recipe-book-1ce78.firebaseio.com/recipes.json')
             .pipe(
                 map(recipes => {
@@ -38,12 +38,17 @@ export class DataStorageService {
                            ingredients: recipe.ingredients? recipe.ingredients : []
                        };
                     });
+                }),
+                tap(recipes => {
+                    this.recipeService.setRecipes(recipes);
+                    // tap operator allows us to execute some code here without altering
+                    // the data which is bundled with the observable
                 })
             )
-            .subscribe(recipes => {
-                console.log(recipes);
-                this.recipeService.setRecipes(recipes);
-            })
-    }
+            // .subscribe(recipes => { // not subscribing here anymore after using resolver
+            //     console.log(recipes);
+            //     this.recipeService.setRecipes(recipes);
+            // })
+        }
 
 }
